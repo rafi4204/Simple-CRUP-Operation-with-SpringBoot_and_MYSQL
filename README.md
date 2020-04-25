@@ -1,1 +1,1 @@
-# Simple-REST-API-with-SpringBoot
+# Simple-CRUP-Operation-with-SpringBoot_and_MYSQL
