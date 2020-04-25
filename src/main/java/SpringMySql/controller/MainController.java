@@ -26,10 +26,24 @@ public class MainController {
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public ModelAndView doSave(@RequestParam("name") String name, @RequestParam("age") int age, @RequestParam("gender") String gender) {
+    public ModelAndView doSave(@RequestParam("id") int id, @RequestParam("name") String name, @RequestParam("age") int age, @RequestParam("gender") String gender) {
         ModelAndView mv = new ModelAndView("redirect:/");
-        User user = new User(name, age, gender);
-        userRepo.save(user);
+        if (id==-1) {
+            User user = new User(name, age, gender);
+            userRepo.save(user);
+        } else {
+            if(userRepo.findById(id).isPresent()) {
+                User user = userRepo.findById(id).get();
+                user.setAge(age);
+                user.setName(name);
+                user.setGender(gender);
+                userRepo.save(user);
+            }
+
+
+        }
+
+
         return mv;
     }
 
@@ -45,6 +59,14 @@ public class MainController {
     public ModelAndView doDelete(@PathVariable("id") int id) {
         ModelAndView mv = new ModelAndView("redirect:/");
         userRepo.deleteById(id);
+        return mv;
+    }
+
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
+    public ModelAndView doUpdate(@PathVariable("id") int id) {
+        ModelAndView mv = new ModelAndView("update");
+        if (userRepo.findById(id).isPresent())
+            mv.addObject("item", userRepo.findById(id).get());
         return mv;
     }
 }

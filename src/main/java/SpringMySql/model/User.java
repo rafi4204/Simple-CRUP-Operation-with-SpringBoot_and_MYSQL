@@ -27,6 +27,13 @@ public class User {
         this.gender = gender;
     }
 
+    public User(int id, String name, int age, String gender) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+    }
+
     public User() {
     }
 
@@ -53,6 +60,7 @@ public class User {
     public void setGender(String gender) {
         this.gender = gender;
     }
+
     public int getId() {
         return id;
     }
