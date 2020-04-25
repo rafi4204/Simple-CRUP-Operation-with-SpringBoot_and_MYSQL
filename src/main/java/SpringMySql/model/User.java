@@ -4,11 +4,14 @@ package SpringMySql.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name ="user")
+@Table(name = "user")
 public class User {
+
+
     @Id
-    @Column(name = "id")
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public int id;
     @Column(name = "name")
     public String name;
@@ -18,6 +21,7 @@ public class User {
     public String gender;
 
     public User(String name, int age, String gender) {
+
         this.name = name;
         this.age = age;
         this.gender = gender;
@@ -48,5 +52,12 @@ public class User {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

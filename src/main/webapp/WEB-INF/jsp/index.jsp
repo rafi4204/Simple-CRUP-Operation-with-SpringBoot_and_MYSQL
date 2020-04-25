@@ -7,8 +7,16 @@
 
 <body>
 <c:forEach var="i" items="${list}">
-Item <c:out value="${i.name}"/><p>
-    </c:forEach>
+
+    Item <c:out value="${i.name}"/> <a href="/view/${i.id}">view</a>
+
+    <%--Item <c:out value="${i.id}"/><p>--%>
+    <%--    "${i.id}"--%>
+
+    <%--Item <c:out value="${i.id}"/><p>--%>
+
+    <br>
+</c:forEach>
 <form method="post" action="/save">
     Name:<br>
     <input type="text" name="name">
