@@ -8,13 +8,8 @@
 <body>
 <c:forEach var="i" items="${list}">
 
-    Item <c:out value="${i.name}"/> <a href="/view/${i.id}">view</a>
-
-    <%--Item <c:out value="${i.id}"/><p>--%>
-    <%--    "${i.id}"--%>
-
-    <%--Item <c:out value="${i.id}"/><p>--%>
-
+    Item <c:out value="${i.name}"/> <a href="/view/${i.id}">view</a> <a href="/delete/${i.id}">Delete</a>
+    <br>
     <br>
 </c:forEach>
 <form method="post" action="/save">

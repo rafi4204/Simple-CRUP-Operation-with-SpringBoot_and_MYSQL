@@ -40,4 +40,11 @@ public class MainController {
             mv.addObject("item", userRepo.findById(id).get());
         return mv;
     }
+
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    public ModelAndView doDelete(@PathVariable("id") int id) {
+        ModelAndView mv = new ModelAndView("redirect:/");
+        userRepo.deleteById(id);
+        return mv;
+    }
 }
